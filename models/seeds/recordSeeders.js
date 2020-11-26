@@ -6,7 +6,7 @@ db.once('open', () => {
     Record.create({
       name: `name-${i}`,
       category: `category-${i}`,
-      date: `date-${i}`
+      date: `date-${i}`,
       amount: `amount-${i}`,
       totalAmount: `totalAmount-${i}`
     })
