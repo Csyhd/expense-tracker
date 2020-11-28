@@ -16,23 +16,19 @@
 
       <div class="form-group dropdown row">
         <label for="category" class="col-sm-3">類別＊</label>
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="category" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          {{record.category}}
-        </button>
-        <div class="dropdown-menu" aria-labelledby="category">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
+        <select class="form-control col-sm-6" id="category" name="category" placeholder="category">
+          {{#each categories}}
+          <option {{#if this.selected}}selected{{/if}}>{{this.category}}</option>
+          {{/each}}
+        </select>
       </div>
 
-      <div class="form-group row">
+      <div class=" form-group row">
         <label for="amount" class="col-sm-3">金額＊</label>
         <input type="text" class="form-control col-sm-6 ml-3" id="amount" name="amount" placeholder="amount"
           value="{{record.amount}}">
       </div>
-      <button type="submit" class="btn btn-primary">新增支出</button>
+      <button type="submit" class="btn btn-primary">送出</button>
     </form>
   </div>
 </div>
