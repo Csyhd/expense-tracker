@@ -1,1 +1,85 @@
-<h1>hello</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 mb-3">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 mb-3">
+      <div class="row">
+        <div class="col-sm-6 mb-3">
+          <h2>總金額：</h2>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <p class="lead">9999999</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="background-color: aqua;">
+    <div class="col-sm-12 mb-3">
+      <ul class="list-group">
+        {{#each records}}
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-auto mr-auto category">
+              <h4 style="display: inline; vertical-align: middle;">
+                {{this.category}}
+              </h4>
+            </div>
+            <div class="col-auto mr-auto">
+              <div class="row">
+                <div class="col-sm-12 mr-auto name">
+                  <h4 style="display: inline; vertical-align: middle;">
+                    {{this.name}}
+                  </h4>
+                </div>
+                <div class="col-sm-12 mr-auto date">
+                  <h4 style="display: inline; vertical-align: middle;">
+                    {{this.date}}
+                  </h4>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-auto mr-auto amount">
+              <h4 style="display: inline; vertical-align: middle;">
+                {{this.amount}}
+              </h4>
+            </div>
+
+
+            <div class="col-auto mr-auto">
+              <a class="btn btn-secondary" href="./todos/{{ this._id }}">修改</a>
+              <a class="btn btn-secondary" href="./todos/{{ this._id }}">刪除</a>
+              </h4>
+            </div>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 mb-3">
+      <a class="btn btn-success" href="./todos/{{ this._id }}/edit">新增</a>
+    </div>
+  </div>
+</div>

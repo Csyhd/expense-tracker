@@ -7,6 +7,7 @@ db.once('open', () => {
     RecordList.push({
       name: `name-${i}`,
       date: i,
+      category: `category-${i}`,
       amount: i,
       totalAmount: i
     })

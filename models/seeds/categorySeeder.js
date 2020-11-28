@@ -12,6 +12,7 @@ db.once('open', () => {
       console.log('category created')
       return db.close()
     })
+
 })
 
 
