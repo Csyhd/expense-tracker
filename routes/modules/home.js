@@ -9,13 +9,14 @@ router.get('/', (req, res) => {
     // )
     .lean()
     .then((records) => {
+      records.forEach((record) => {
+        return Category.findOne({ category: record.category })
+          .then((icon) => {
+            record.icon = icon.icon
+          })
+      })
       return res.render('index', { records })
     })
-    // .then(
-    //   Category.find()
-    //     .lean()
-    //     .then(categories => { return res.render('index', { categories }) })
-    // )
     .catch(error => console.log(error))
 })
 

@@ -9,8 +9,12 @@ const recordSchema = new Schema({
     type: String,
     required: false
   },
+  icon: {
+    type: String,
+    required: false
+  },
   date: {
-    type: Number,
+    type: String,
     required: true
   },
   amount: {

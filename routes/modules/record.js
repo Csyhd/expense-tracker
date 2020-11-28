@@ -16,6 +16,17 @@ router.get('/:id/edit', (req, res) => {
     })
 })
 
+router.put('/:id', (req, res) => {
+  const id = req.params.id
+
+  Record.findById(id)
+    .then((record) => {
+      return res.render('edit', { record })
+    })
+})
+
+
+
 router.delete('/:id', (req, res) => {
   const id = req.params.id
   Record.findById(id)
