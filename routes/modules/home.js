@@ -2,21 +2,26 @@ const express = require('express')
 const router = express.Router()
 const Record = require('../../models/Record')
 const Category = require('../../models/Category')
+let totalAmount = 0
 
 router.get('/', (req, res) => {
   Record.find()
-    // .then(() => { return Record.category = Category.find() }
-    // )
     .lean()
     .then((records) => {
       records.forEach((record) => {
+        totalAmount += record.amount
         return Category.findOne({ category: record.category })
           .then((icon) => {
-            record.icon = icon.icon
+            return record.icon = icon.icon
           })
       })
-      return res.render('index', { records })
+      return res.render('index', { records, totalAmount })
     })
+
+
+    // .then((records) => {
+    //   return res.render('index', { records })
+    // })
     .catch(error => console.log(error))
 })
 
