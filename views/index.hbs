@@ -1,34 +1,29 @@
 <div class="container">
 
-  <form class="col-sm-12" action="/records/filter" method="GET" style="display: inline;">
-    <div class="form-group dropdown row">
-      <label for="category" class="col-sm-3">類別＊</label>
-      <select class="form-control col-sm-6" id="category" name="category" placeholder="category">
-        {{#each categories}}
-        <option value="{{this._id}}">{{this.category}}</option>
-        {{/each}}
-      </select>
-      <button class="btn btn-danger" type="submit">篩選</button>
-
-    </div>
-  </form>
-
-  <div class="row">
-    <div class="col-sm-12 mb-3">
-      <div class="row">
-        <div class="col-sm-6 mb-3">
-          <h2>總金額：</h2>
-        </div>
-        <div class="col-sm-6 mb-3">
-          <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-              <p class="lead">{{totalAmount}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="row text-center">
+    <div class=" col-sm-12 mt-5">
+      <h4>總金額：</h2>
+        <p class="lead" style="font-size: 100px;">${{totalAmount}}</p>
     </div>
   </div>
+
+  <div class="row">
+    <form class="col-sm-6 filter-select" action="/records/filter" method="GET" style="display: inline;">
+      <div class="form-group dropdown row filter-select-box justify-content-start">
+        <select class="form-control col-sm-3 mr-2 filter-select-list" id="category" name="category"
+          placeholder="category">
+          {{#each categories}}
+          <option value="{{this._id}}">{{this.category}}</option>
+          {{/each}}
+        </select>
+        <button class="btn btn-light col-sm-3" type="submit">篩選</button>
+      </div>
+    </form>
+    <div class="col-sm-6 mb-3">
+      <a class="btn btn-success" href="/records/new">新增</a>
+    </div>
+  </div>
+
 
   <div class="row">
     <div class="col-sm-12 mb-3">
@@ -36,32 +31,29 @@
         {{#each records}}
         <li class="list-group-item">
           <div class="row">
-            <div class="col-auto mr-auto category">
+            <div class="col-sm-1 mr-auto category-icon">
               {{{this.icon}}}
             </div>
-            <div class="col-auto mr-auto">
+            <div class="col-sm-3 mr-auto">
               <div class="row">
-                <div class="col-sm-12 mr-auto name">
-                  <h4 style="display: inline; vertical-align: middle;">
+                <div class="col-sm-12 mr-auto mb-2 name">
+                  <p style="display: inline; vertical-align: middle;">
                     {{this.name}}
-                  </h4>
+                  </p>
                 </div>
                 <div class="col-sm-12 mr-auto date">
-                  <h4 style="display: inline; vertical-align: middle;">
+                  <p style="display: inline; vertical-align: middle;">
                     {{this.date}}
-                  </h4>
+                  </p>
                 </div>
               </div>
-
             </div>
-            <div class="col-auto mr-auto amount">
-              <h4 style="display: inline; vertical-align: middle;">
-                {{this.amount}}
-              </h4>
+            <div class="col-sm-3 mr-auto amount">
+              <p style="display: inline; vertical-align: middle; font-size:">
+                ${{this.amount}}
+              </p>
             </div>
-
-
-            <div class="col-auto mr-auto">
+            <div class="col-sm-3 mr-auto">
               <a class="btn btn-secondary" href="/records/{{ this._id }}/edit">修改</a>
               <form action="/records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
                 <button class="btn btn-danger" type="submit">刪除</button>
@@ -75,9 +67,5 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-sm-12 mb-3">
-      <a class="btn btn-success" href="/records/new">新增</a>
-    </div>
-  </div>
+
 </div>

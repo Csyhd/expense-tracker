@@ -1,0 +1,29 @@
+.filter-select-box {
+  height: 100%;
+  width: 100%;
+      /* border: 2px solid red; */
+      /* background-color: aquamarine; */
+    }
+
+.category-icon {
+  font-size: 50px;
+  color: rgb(40, 206, 206);
+}
+
+.list-group-item *{
+  /* border: aquamarine 2px solid; */
+}
+
+.list-group-item .name {
+  font-size: 30px;
+}
+
+.list-group-item .date {
+  font-size: 20px;
+}
+
+.list-group-item .amount {
+  width: auto;
+  height: auto;
+  font-size: 100%;
+}
