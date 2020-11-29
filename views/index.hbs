@@ -1,19 +1,17 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-12 mb-3">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Dropdown button
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
+
+  <form class="col-sm-12" action="/records/filter" method="GET" style="display: inline;">
+    <div class="form-group dropdown row">
+      <label for="category" class="col-sm-3">類別＊</label>
+      <select class="form-control col-sm-6" id="category" name="category" placeholder="category">
+        {{#each categories}}
+        <option value="{{this._id}}">{{this.category}}</option>
+        {{/each}}
+      </select>
+      <button class="btn btn-danger" type="submit">篩選</button>
+
     </div>
-  </div>
+  </form>
 
   <div class="row">
     <div class="col-sm-12 mb-3">

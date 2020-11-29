@@ -15,8 +15,14 @@ router.get('/', (req, res) => {
           .then((icon) => {
             return record.icon = icon.icon
           })
+          .then(() => {
+            return Category.find()
+              .lean()
+              .then((categories) => {
+                return res.render('index', { records, totalAmount, categories })
+              })
+          })
       })
-      return res.render('index', { records, totalAmount })
     })
     .catch(error => console.log(error))
 })

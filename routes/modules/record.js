@@ -66,4 +66,31 @@ router.delete('/:id', (req, res) => {
     })
 })
 
+router.get('/filter', (req, res) => {
+  let totalAmount = 0
+  const filterId = req.query.category
+  Category.findById(filterId)
+    .then((id) => {
+      return Record.find({ category: id.category })
+        .lean()
+        .then((records) => {
+          records.forEach((record) => {
+            totalAmount += record.amount
+            return Category.findOne({ category: record.category })
+              .then((icon) => {
+                return record.icon = icon.icon
+              })
+              .then(() => {
+                return Category.find()
+                  .lean()
+                  .then((categories) => {
+                    return res.render('index', { records, totalAmount, categories })
+                  })
+              })
+          })
+        })
+    })
+
+})
+
 module.exports = router
