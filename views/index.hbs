@@ -7,19 +7,19 @@
     </div>
   </div>
 
-  <div class="row">
-    <form class="col-sm-6 filter-select" action="/records/filter" method="GET" style="display: inline;">
-      <div class="form-group dropdown row filter-select-box justify-content-start">
+  <div class="row filter-select justify-content-between">
+    <form class="col-sm-5 m-3 filter-select-box" action="/records/filter" method="GET" style="display: inline;">
+      <div class="form-group dropdown row  justify-content-start">
         <select class="form-control col-sm-3 mr-2 filter-select-list" id="category" name="category"
           placeholder="category">
           {{#each categories}}
           <option value="{{this._id}}">{{this.category}}</option>
           {{/each}}
         </select>
-        <button class="btn btn-light col-sm-3" type="submit">篩選</button>
+        <button class="btn btn-dark col-sm-3" type="submit">篩選</button>
       </div>
     </form>
-    <div class="col-sm-6 mb-3">
+    <div class="col-sm-auto mb-3 m-3 filter-select-box text-center">
       <a class="btn btn-success" href="/records/new">新增</a>
     </div>
   </div>
@@ -30,30 +30,30 @@
       <ul class="list-group">
         {{#each records}}
         <li class="list-group-item">
-          <div class="row">
-            <div class="col-sm-1 mr-auto category-icon">
+          <div class="row  align-items-center justify-content-between">
+            <div class="col-sm-1 m-2 category-icon text-center">
               {{{this.icon}}}
             </div>
-            <div class="col-sm-3 mr-auto">
+            <div class="col-sm-3 m2">
               <div class="row">
-                <div class="col-sm-12 mr-auto mb-2 name">
+                <div class="col-sm-12 mr-auto mb-2 name text-center">
                   <p style="display: inline; vertical-align: middle;">
                     {{this.name}}
                   </p>
                 </div>
-                <div class="col-sm-12 mr-auto date">
+                <div class="col-sm-12 mr-auto date text-center">
                   <p style="display: inline; vertical-align: middle;">
                     {{this.date}}
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-sm-3 mr-auto amount">
+            <div class="col-sm-3 m-2 amount text-center">
               <p style="display: inline; vertical-align: middle; font-size:">
                 ${{this.amount}}
               </p>
             </div>
-            <div class="col-sm-3 mr-auto">
+            <div class="col-sm-3 m-2 text-center">
               <a class="btn btn-secondary" href="/records/{{ this._id }}/edit">修改</a>
               <form action="/records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
                 <button class="btn btn-danger" type="submit">刪除</button>
