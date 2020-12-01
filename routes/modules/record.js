@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Record = require('../../models/Record')
 const Category = require('../../models/Category')
+const totalAmounts = require('../../public/javascripts/totalAmounts')
 
 router.get('/new', (req, res) => {
   Category.find()
@@ -74,20 +75,19 @@ router.get('/filter', (req, res) => {
       return Record.find({ category: id.category })
         .lean()
         .then((records) => {
+          totalAmount = totalAmounts(records)
           records.forEach((record) => {
-            totalAmount += record.amount
             return Category.findOne({ category: record.category })
               .then((icon) => {
                 return record.icon = icon.icon
               })
-              .then(() => {
-                return Category.find()
-                  .lean()
-                  .then((categories) => {
-                    return res.render('index', { records, totalAmount, categories })
-                  })
-              })
+
           })
+          return Category.find()
+            .lean()
+            .then((categories) => {
+              return res.render('index', { records, totalAmount, categories })
+            })
         })
     })
 })
