@@ -14,6 +14,7 @@ router.get('/new', (req, res) => {
 
 router.post('/', (req, res) => {
   const newRecord = req.body
+  console.log(newRecord)
   Record.create(newRecord)
     .then(() => {
       return res.redirect('/')
@@ -68,7 +69,6 @@ router.delete('/:id', (req, res) => {
 })
 
 router.get('/filter', (req, res) => {
-  let totalAmount = 0
   const filterId = req.query.category
   Category.findById(filterId)
     .then((id) => {
@@ -81,12 +81,11 @@ router.get('/filter', (req, res) => {
               .then((icon) => {
                 return record.icon = icon.icon
               })
-
           })
           return Category.find()
             .lean()
             .then((categories) => {
-              return res.render('index', { records, totalAmount, categories })
+              return res.render('index', { records, totalAmount, categories, filterId })
             })
         })
     })

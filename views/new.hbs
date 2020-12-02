@@ -17,8 +17,14 @@
 
       <div class="form-group row form-list">
         <label for="date" class="col-sm-3">日期＊</label>
-        <input type="text" class="form-control col-sm-6 ml-3" id="date" name="date" placeholder="yyyy/mm/dd">
-        <i class="fa fa-calendar ml-3"></i>
+        <div class="input-group date col-sm-6" id="datepicker">
+          <input type='text' class="form-control col-sm-12" id="date" name="date" />
+          <span class="input-group-addon ml-5">
+            <span>
+              <i class="fa fa-calendar" style="color:rgb(24, 122, 233);font-size:30px;"></i>
+            </span>
+          </span>
+        </div>
       </div>
 
       <div class="form-group dropdown row form-list">
@@ -30,7 +36,6 @@
         </select>
       </div>
 
-
       <div class="form-group row form-list">
         <label for="amount" class="col-sm-3">金額＊</label>
         <input type="text" class="form-control col-sm-6 ml-3" id="amount" name="amount" placeholder="amount">
@@ -41,3 +46,11 @@
     </form>
   </div>
 </div>
+
+<script type=" text/javascript">
+$(function () {
+  $('#datepicker').datepicker({
+    format: 'yyyy/mm/dd',
+    })
+})
+</script>
