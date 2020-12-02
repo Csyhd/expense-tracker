@@ -4,6 +4,7 @@ const Record = require('../../models/Record')
 const Category = require('../../models/Category')
 const totalAmounts = require('../../public/javascripts/totalAmounts')
 
+
 router.get('/new', (req, res) => {
   Category.find()
     .lean()
