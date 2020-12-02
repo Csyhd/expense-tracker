@@ -9,18 +9,11 @@ router.get('/', (req, res) => {
     .lean()
     .then((records) => {
       totalAmount = totalAmounts(records)
-      records.forEach((record) => {
-        return Category.findOne({ category: record.category })
-          .then((icon) => {
-            return record.icon = icon.icon
-          })
-      })
       Category.find()
         .lean()
         .then((categories) => {
           return res.render('index', { records, totalAmount, categories })
         })
-
     })
     .catch(error => console.log(error))
 })

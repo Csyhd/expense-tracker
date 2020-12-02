@@ -15,8 +15,11 @@ router.get('/new', (req, res) => {
 
 router.post('/', (req, res) => {
   const newRecord = req.body
-  console.log(newRecord)
-  Record.create(newRecord)
+  Category.findOne({ category: newRecord.category })
+    .then((categories) => {
+      newRecord.icon = categories.icon
+      return Record.create(newRecord)
+    })
     .then(() => {
       return res.redirect('/')
     })
@@ -44,12 +47,17 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   const id = req.params.id
   const editDate = req.body
+  Category.findOne({ category: editDate.category })
+    .then((categories) => {
+      editDate.icon = categories.icon
+    })
   return Record.findById(id)
     .then(record => {
       record.name = editDate.name
       record.date = editDate.date
       record.category = editDate.category
       record.amount = editDate.amount
+      record.icon = editDate.icon
       return record.save()
     })
     .then(() => {
@@ -77,12 +85,6 @@ router.get('/filter', (req, res) => {
         .lean()
         .then((records) => {
           totalAmount = totalAmounts(records)
-          records.forEach((record) => {
-            return Category.findOne({ category: record.category })
-              .then((icon) => {
-                return record.icon = icon.icon
-              })
-          })
           return Category.find()
             .lean()
             .then((categories) => {
