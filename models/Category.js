@@ -9,6 +9,10 @@ const categorySchema = new Schema({
   icon: {
     type: String,
     required: true
+  },
+  status: {
+    type: Boolean,
+    required: true
   }
 })
 

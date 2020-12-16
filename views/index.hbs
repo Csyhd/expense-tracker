@@ -13,7 +13,7 @@
         <select class="form-control col-sm-3 mr-2 filter-select-list" id="category" name="category"
           placeholder="category">
           {{#each categories}}
-          <option value="{{this._id}}">{{this.category}}</option>
+          <option value="{{this._id}}" {{#if this.status}}selected{{/if}}>{{this.category}}</option>
           {{/each}}
         </select>
         <button class="btn btn-dark col-sm-3" type="submit">篩選</button>

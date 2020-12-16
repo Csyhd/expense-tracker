@@ -81,6 +81,8 @@ router.get('/filter', (req, res) => {
   const filterId = req.query.category
   Category.findById(filterId)
     .then((id) => {
+      id.status = 1
+      id.save()
       return Record.find({ category: id.category })
         .lean()
         .then((records) => {
@@ -89,9 +91,16 @@ router.get('/filter', (req, res) => {
             .lean()
             .then((categories) => {
               return res.render('index', { records, totalAmount, categories, filterId })
+
             })
         })
+        .then(() => {
+          id.status = 0
+          id.save()
+        })
+
     })
+
 })
 
 module.exports = router
